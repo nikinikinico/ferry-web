@@ -21,9 +21,11 @@ export default {
         editor: 'Editor',
         cascader: 'Cascader',
         table: 'Sub-table',
+        subform: 'Sub-form',
         grid: 'Grid',
         tabs: 'Tabs',
-        divider: 'Divider'
+        divider: 'Divider',
+        file: 'File'
       },
       basic: {
         title: 'Basic Component'
@@ -36,10 +38,13 @@ export default {
       }
     },
     description: {
-      containerEmpty: 'You can drag and drop the item from the left to add components',
+      containerEmpty:
+        'You can drag and drop the item from the left to add components',
       configEmpty: 'Please add a component',
-      tableEmpty: 'You can drag and drop the item from the left to add components',
-      uploadJsonInfo: 'There is the format of JSON below，you can overwrite it with you own JSON code'
+      tableEmpty:
+        'You can drag and drop the item from the left to add components',
+      uploadJsonInfo:
+        'There is the format of JSON below，you can overwrite it with you own JSON code'
     },
     message: {
       copySuccess: 'Copy Successed',
@@ -174,7 +179,43 @@ export default {
         tab: 'Tab',
         validatorRequired: 'Required',
         validatorType: 'Invaild format',
-        validatorPattern: 'Unmatched pattern'
+        validatorPattern: 'Unmatched pattern',
+        showAllLevels: 'Full path',
+        displayVerify: 'Display check',
+        displayVerifyPlaceholderModel: 'Please enter field identification',
+        displayVerifyPlaceholderValue: 'Please enter a field value',
+        enterUrl: 'Please enter URL',
+        requestMethod: 'Request Method',
+        requestParams: 'Request Params（JSON）',
+        enterContent: 'Please enter content',
+        requesetHeader: 'Request Headers（JSON）',
+        timeOutPeriod: 'Time-out period',
+        returnField: 'Return field',
+        fieldMapping: 'Field mapping',
+        textContent: 'Text',
+        enterTextContent: 'Please enter text',
+        fontSize: 'Text font size',
+        enterFontSize: 'Please enter font size',
+        fontColor: 'Font color',
+        enterFontColor: 'Please enter font color',
+        setBold: 'Font weight',
+        enterSetBold: 'Please enter font weight',
+        fontAttribute: 'Font Attribute',
+        enterFontAttribute: 'Please enter font attribute',
+        textPosition: 'Text Position',
+        left: 'Left',
+        center: 'Center',
+        right: 'Right',
+        horizontal: 'horizontal',
+        vertical: 'vertical',
+        dividingLineDirection: 'Dividing line direction',
+        noVerify: 'No verify',
+        and: 'And',
+        or: 'Or',
+        promot: 'Promot',
+        labelRequired: 'Label is required',
+        valueRequired: 'Value is required',
+        filedValue: 'Field value'
       }
     },
     upload: {

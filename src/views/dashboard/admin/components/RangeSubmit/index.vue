@@ -1,5 +1,9 @@
 <template>
-  <div style="padding: 0 25px 20px 20px;" :class="className" :style="{height:height,width:width}" />
+  <div
+    style="padding: 0 25px 20px 20px"
+    :class="className"
+    :style="{ height: height, width: width }"
+  />
 </template>
 
 <script>
@@ -72,7 +76,7 @@ export default {
           trigger: 'axis'
         },
         legend: {
-          data: ['工单总数', '未结束', '已结束']
+          data: [this.$t('工单总数'), this.$t('未结束'), this.$t('已结束')]
         },
         grid: {
           left: '25',
@@ -91,17 +95,17 @@ export default {
         },
         series: [
           {
-            name: '工单总数',
+            name: this.$t('工单总数'),
             type: 'line',
             data: this.statisticsData.total
           },
           {
-            name: '未结束',
+            name: this.$t('未结束'),
             type: 'line',
             data: this.statisticsData.processing
           },
           {
-            name: '已结束',
+            name: this.$t('已结束'),
             type: 'line',
             data: this.statisticsData.overs
           }

@@ -1,3 +1,4 @@
+import i18n from '@/locale/index'
 export const basicComponents = [
   {
     type: 'input',
@@ -16,10 +17,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -38,10 +41,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -62,10 +67,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -105,10 +112,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -145,10 +154,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -210,10 +221,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -230,10 +243,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -255,7 +270,8 @@ export const basicComponents = [
         },
         {
           value: 'Option 2'
-        }, {
+        },
+        {
           value: 'Option 3'
         }
       ],
@@ -280,10 +296,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -299,10 +317,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -324,10 +344,12 @@ export const basicComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -346,10 +368,12 @@ export const basicComponents = [
       labelWidthDisabled: false,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   }
@@ -366,10 +390,12 @@ export const advanceComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -399,10 +425,12 @@ export const advanceComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -426,10 +454,12 @@ export const advanceComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -444,10 +474,12 @@ export const advanceComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
@@ -463,28 +495,36 @@ export const advanceComponents = [
       remote: false,
       remoteOptions: [],
       showAllLevels: true,
-      options: [{
-        value: 'lanyulei',
-        label: '作者',
-        children: [{
-          value: 'character',
-          label: '性格',
-          children: [{
-            value: 'good',
-            label: '好'
-          }, {
-            value: 'well',
-            label: '很好'
-          }, {
-            value: 'veryGood',
-            label: '非常好'
-          }]
-        },
+      options: [
         {
-          value: 'Handsome',
-          label: '帅气'
-        }]
-      }],
+          value: 'lanyulei',
+          label: '作者',
+          children: [
+            {
+              value: 'character',
+              label: '性格',
+              children: [
+                {
+                  value: 'good',
+                  label: '好'
+                },
+                {
+                  value: 'well',
+                  label: '很好'
+                },
+                {
+                  value: 'veryGood',
+                  label: '非常好'
+                }
+              ]
+            },
+            {
+              value: 'Handsome',
+              label: '帅气'
+            }
+          ]
+        }
+      ],
       props: {
         value: 'value',
         label: 'label',
@@ -496,23 +536,28 @@ export const advanceComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   },
   {
     type: 'subform',
     icon: 'icon-table',
-    columns: [{
-      span: 12,
-      list: []
-    }, {
-      span: 12,
-      list: []
-    }],
+    columns: [
+      {
+        span: 12,
+        list: []
+      },
+      {
+        span: 12,
+        list: []
+      }
+    ],
     options: {
       gutter: 0,
       justify: 'start',
@@ -522,10 +567,12 @@ export const advanceComponents = [
       labelWidthStatus: true,
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   }
@@ -564,10 +611,12 @@ export const layoutComponents = [
       content_position: 'center', // left / right / center 设置分割线文案的位置
       displayVerify: {
         type: 'hide',
-        list: [{
-          model: '字段标识',
-          value: '字段值'
-        }]
+        list: [
+          {
+            model: i18n.t('fm.config.widget.model'),
+            value: i18n.t('fm.config.widget.filedValue')
+          }
+        ]
       }
     }
   }
