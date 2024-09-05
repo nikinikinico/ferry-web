@@ -2,79 +2,118 @@
   <div class="app-container">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>配置信息</span>
+        <span>{{ $t('配置信息') }}</span>
       </div>
       <div class="text item">
-        <el-form ref="ruleForm" :model="ruleForm" :rules="rules" label-width="120px">
-          <el-form-item label="系统名称：" prop="name">
+        <el-form
+          ref="ruleForm"
+          :model="ruleForm"
+          :rules="rules"
+          label-width="120px"
+        >
+          <el-form-item :label="$t('系统名称') + ':'" prop="name">
             <el-input v-model="ruleForm.name" />
           </el-form-item>
-          <el-form-item label="系统Logo：" prop="logo">
+          <el-form-item :label="$t('系统Logo') + ':'" prop="logo">
             <el-upload
               class="avatar-uploader"
               :action="url"
-              :data="{type:'1'}"
+              :data="{ type: '1' }"
               :show-file-list="false"
               :on-success="handleAvatarSuccess"
               :before-upload="beforeAvatarUpload"
             >
-              <img v-if="ruleForm.logo" :src="ruleForm.logo" class="avatar">
+              <img v-if="ruleForm.logo" :src="ruleForm.logo" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon" />
             </el-upload>
           </el-form-item>
-          <el-form-item label="验证码：">
-            <el-radio v-model="ruleForm.is_verify_code" :label="true">是</el-radio>
-            <el-radio v-model="ruleForm.is_verify_code" :label="false">否</el-radio>
+          <el-form-item :label="$t('验证码') + ':'">
+            <el-radio v-model="ruleForm.is_verify_code" :label="true">{{
+              $t('是')
+            }}</el-radio>
+            <el-radio v-model="ruleForm.is_verify_code" :label="false">{{
+              $t('否')
+            }}</el-radio>
           </el-form-item>
-          <el-form-item label="LDAP登陆：">
-            <el-radio v-model="ruleForm.is_ldap" :label="true">是</el-radio>
-            <el-radio v-model="ruleForm.is_ldap" :label="false">否</el-radio>
+          <el-form-item :label="$t('LDAP登陆') + ':'">
+            <el-radio v-model="ruleForm.is_ldap" :label="true">{{
+              $t('是')
+            }}</el-radio>
+            <el-radio v-model="ruleForm.is_ldap" :label="false">{{
+              $t('否')
+            }}</el-radio>
           </el-form-item>
           <el-form-item style="margin-bottom: 0">
-            <el-button v-permisaction="['system:settings:index:config']" type="primary" @click="submitForm('ruleForm', 1)">确定</el-button>
+            <el-button
+              v-permisaction="['system:settings:index:config']"
+              type="primary"
+              @click="submitForm('ruleForm', 1)"
+              >{{ $t('确定') }}</el-button
+            >
           </el-form-item>
         </el-form>
       </div>
     </el-card>
     <el-card class="box-card" style="margin-top: 15px">
       <div slot="header" class="clearfix">
-        <span>Ldap配置</span>
+        <span>{{ $t('Ldap配置') }}</span>
       </div>
       <div class="text item">
         <el-alert
-          title="Ldap登陆验证通过后，会将用户同步至本地数据库中，请在此配置数据同步的映射关系。单击Ldap字段可编辑，双击可隐藏编辑。"
+          :title="
+            $t(
+              'Ldap登陆验证通过后，会将用户同步至本地数据库中，请在此配置数据同步的映射关系。单击Ldap字段可编辑，双击可隐藏编辑。'
+            )
+          "
           type="info"
           style="margin-bottom: 10px"
         />
-        <el-table
-          :data="tableData"
-          border
-          style="width: 100%"
-        >
+        <el-table :data="tableData" border style="width: 100%">
           <el-table-column
             prop="local_field_name"
-            label="字段名称"
+            :label="$t('字段名称')"
             width="150"
           />
           <el-table-column
             prop="local_field_nick"
-            label="字段昵称"
+            :label="$t('字段昵称')"
             width="150"
           />
-          <el-table-column
-            prop="ldap_field_name"
-            label="Ldap字段"
-          >
-            <template slot-scope="{row, $index}">
-              <div style="width: 100%; min-height: 24px;" @click="{{ chengenum($index, true) }}" @dblclick="{{ chengenum($index, false) }}">
-                <el-input v-if="editable[$index]" v-model="row.ldap_field_name" />
+          <el-table-column prop="ldap_field_name" :label="$t('Ldap字段')">
+            <template slot-scope="{ row, $index }">
+              <div
+                style="width: 100%; min-height: 24px"
+                @click="
+                  {
+                    {
+                      chengenum($index, true)
+                    }
+                  }
+                "
+                @dblclick="
+                  {
+                    {
+                      chengenum($index, false)
+                    }
+                  }
+                "
+              >
+                <el-input
+                  v-if="editable[$index]"
+                  v-model="row.ldap_field_name"
+                />
                 <span v-else>{{ row.ldap_field_name }}</span>
               </div>
             </template>
           </el-table-column>
         </el-table>
         <div style="margin-top: 20px">
-          <el-button v-permisaction="['system:settings:index:ldap']" type="primary" @click="submitForm('ruleForm', 2)">确定</el-button>
+          <el-button
+            v-permisaction="['system:settings:index:ldap']"
+            type="primary"
+            @click="submitForm('ruleForm', 2)"
+            >{{ $t('确定') }}</el-button
+          >
         </div>
       </div>
     </el-card>
@@ -84,9 +123,7 @@
 <script>
 import { setSettings, getSettings } from '@/api/system/settings'
 export default {
-  components: {
-
-  },
+  components: {},
   data() {
     return {
       url: process.env.VUE_APP_BASE_API + '/api/v1/public/uploadFile',
@@ -99,11 +136,20 @@ export default {
       },
       rules: {
         name: [
-          { required: true, message: '请输入系统名称', trigger: 'blur' },
-          { min: 3, max: 15, message: '长度在 3 到 15 个字符', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('请输入系统名称'),
+            trigger: 'blur'
+          },
+          {
+            min: 3,
+            max: 15,
+            message: this.$t('长度在 3 到 15 个字符'),
+            trigger: 'blur'
+          }
         ],
         logo: [
-          { required: true, message: '请设置Logo', trigger: 'blur' }
+          { required: true, message: this.$t('请设置Logo'), trigger: 'blur' }
         ]
       },
       tableData: []
@@ -124,7 +170,10 @@ export default {
                 is_ldap: false
               }
             } else {
-              if (v.content.is_ldap === undefined || v.content.is_ldap === null) {
+              if (
+                v.content.is_ldap === undefined ||
+                v.content.is_ldap === null
+              ) {
                 v.content.is_ldap = false
               }
               this.ruleForm = v.content
@@ -146,7 +195,7 @@ export default {
         classify: classify
       }
       if (classify === 1) {
-        this.$refs[formName].validate((valid) => {
+        this.$refs[formName].validate(valid => {
           if (valid) {
             jsonValue.content = this.ruleForm
             requestStatus = true
@@ -160,7 +209,7 @@ export default {
         setSettings(jsonValue).then(response => {
           this.$store.dispatch('settings/getSystemSettings')
           this.$message({
-            message: '设置成功',
+            message: this.$t('设置成功'),
             type: 'success'
           })
         })
@@ -175,11 +224,12 @@ export default {
     beforeAvatarUpload(file) {
       const isLt2M = file.size / 1024 / 1024 < 2
       if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!')
+        this.$message.error(this.$t('上传头像图片大小不能超过 2MB!'))
       }
       return isLt2M
     },
-    chengenum(row, status) { // 我的方法
+    chengenum(row, status) {
+      // 我的方法
       this.editable[row] = status
       this.$set(this.editable, row, status)
     }
@@ -188,27 +238,27 @@ export default {
 </script>
 
 <style>
-  .avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #409EFF;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}
 </style>

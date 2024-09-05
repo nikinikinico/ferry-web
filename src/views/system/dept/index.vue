@@ -2,10 +2,10 @@
   <div class="app-container">
     <el-card class="box-card">
       <el-form :inline="true">
-        <el-form-item label="部门名称">
+        <el-form-item :label="$t('部门名称')">
           <el-input
             v-model="queryParams.deptName"
-            placeholder="请输入部门名称"
+            :placeholder="$t('请输入部门名称')"
             clearable
             size="small"
             @keyup.enter.native="handleQuery"
@@ -18,7 +18,8 @@
             icon="el-icon-search"
             size="small"
             @click="handleQuery"
-          >搜索</el-button>
+            >{{ $t('搜索') }}</el-button
+          >
           <el-button
             v-permisaction="['system:sysdept:add']"
             class="filter-item"
@@ -26,7 +27,8 @@
             icon="el-icon-plus"
             size="small"
             @click="handleAdd"
-          >新增</el-button>
+            >{{ $t('新增') }}</el-button
+          >
         </el-form-item>
       </el-form>
 
@@ -36,24 +38,34 @@
         row-key="deptId"
         border
         default-expand-all
-        :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
+        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
       >
-        <el-table-column prop="deptName" label="部门名称" />
-        <el-table-column prop="sort" label="排序" width="200" />
-        <el-table-column prop="status" label="状态" width="100">
+        <el-table-column prop="deptName" :label="$t('部门名称')" />
+        <el-table-column prop="sort" :label="$t('排序')" width="200" />
+        <el-table-column prop="status" :label="$t('状态')" width="100">
           <template slot-scope="scope">
             <el-tag
               :type="scope.row.status === '1' ? 'danger' : 'success'"
               disable-transitions
-            >{{ scope.row.status === '1' ? '停用' : '正常' }}</el-tag>
+              >{{ scope.row.status === '1' ? $t('停用') : $t('正常') }}</el-tag
+            >
           </template>
         </el-table-column>
-        <el-table-column label="创建时间" align="center" prop="create_time" width="200">
+        <el-table-column
+          :label="$t('创建时间')"
+          align="center"
+          prop="create_time"
+          width="200"
+        >
           <template slot-scope="scope">
             <span>{{ parseTime(scope.row.create_time) }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
+        <el-table-column
+          :label="$t('操作')"
+          align="center"
+          class-name="small-padding fixed-width"
+        >
           <template slot-scope="scope">
             <el-button
               v-permisaction="['system:sysdept:edit']"
@@ -61,14 +73,16 @@
               type="text"
               icon="el-icon-edit"
               @click="handleUpdate(scope.row)"
-            >编辑</el-button>
+              >{{ $t('编辑') }}</el-button
+            >
             <el-button
               v-permisaction="['system:sysdept:add']"
               size="mini"
               type="text"
               icon="el-icon-plus"
               @click="handleAdd(scope.row)"
-            >新增</el-button>
+              >{{ $t('新增') }}</el-button
+            >
             <el-button
               v-if="scope.row.p_id != 0"
               v-permisaction="['system:sysdept:remove']"
@@ -76,40 +90,54 @@
               type="text"
               icon="el-icon-delete"
               @click="handleDelete(scope.row)"
-            >删除</el-button>
+              >{{ $t('删除') }}</el-button
+            >
           </template>
         </el-table-column>
       </el-table>
     </el-card>
     <!-- 添加或修改部门对话框 -->
-    <el-dialog :title="title" :visible.sync="open" width="600px">
-      <el-form ref="form" :model="form" :rules="rules" label-width="80px">
+    <el-dialog :title="title" :visible.sync="open" width="850px">
+      <el-form ref="form" :model="form" :rules="rules" label-width="auto">
         <el-row>
           <el-col :span="24">
-            <el-form-item label="上级部门" prop="parentId">
+            <el-form-item :label="$t('上级部门')" prop="parentId">
               <treeselect
                 v-model="form.parentId"
                 :options="deptOptions"
                 :normalizer="normalizer"
                 :show-count="true"
-                placeholder="选择上级部门"
+                :placeholder="$t('选择上级部门')"
                 :is-disabled="isEdit"
               />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="部门名称" prop="deptName">
-              <el-input v-model="form.deptName" placeholder="请输入部门名称" />
+            <el-form-item :label="$t('部门名称')" prop="deptName">
+              <el-input
+                v-model="form.deptName"
+                :placeholder="$t('请输入部门名称')"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="显示排序" prop="orderNum">
-              <el-input-number v-model="form.sort" controls-position="right" :min="0" />
+            <el-form-item :label="$t('显示排序')" prop="orderNum">
+              <el-input-number
+                v-model="form.sort"
+                controls-position="right"
+                :min="0"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="负责人" prop="leader">
-              <el-select v-model="form.leader" clearable filterable placeholder="请选择负责人">
+            <el-form-item :label="$t('负责人')" prop="leader">
+              <el-select
+                v-model="form.leader"
+                clearable
+                filterable
+                :placeholder="$t('请选择负责人')"
+                style="width: 100%"
+              >
                 <el-option
                   v-for="item in users"
                   :key="item.userId"
@@ -120,31 +148,42 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="联系电话" prop="phone">
-              <el-input v-model="form.phone" placeholder="请输入联系电话" maxlength="11" />
+            <el-form-item :label="$t('联系电话')" prop="phone">
+              <el-input
+                v-model="form.phone"
+                :placeholder="$t('请输入联系电话')"
+                maxlength="11"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="邮箱" prop="email">
-              <el-input v-model="form.email" placeholder="请输入邮箱" maxlength="50" />
+            <el-form-item :label="$t('邮箱')" prop="email">
+              <el-input
+                v-model="form.email"
+                :placeholder="$t('请输入邮箱')"
+                maxlength="50"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="部门状态">
+            <el-form-item :label="$t('部门状态')">
               <el-radio-group v-model="form.status">
                 <el-radio
                   v-for="dict in statusOptions"
                   :key="dict.value"
                   :label="dict.value"
-                >{{ dict.label }}</el-radio>
+                  >{{ dict.label }}</el-radio
+                >
               </el-radio-group>
             </el-form-item>
           </el-col>
         </el-row>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitForm">确 定</el-button>
-        <el-button @click="cancel">取 消</el-button>
+        <el-button type="primary" @click="submitForm">{{
+          $t('确定')
+        }}</el-button>
+        <el-button @click="cancel">{{ $t('取消') }}</el-button>
       </div>
     </el-dialog>
   </div>
@@ -152,7 +191,13 @@
 
 <script>
 import { listUser } from '@/api/system/sysuser'
-import { getDeptList, getDept, delDept, addDept, updateDept } from '@/api/system/dept'
+import {
+  getDeptList,
+  getDept,
+  delDept,
+  addDept,
+  updateDept
+} from '@/api/system/dept'
 import Treeselect from '@riophae/vue-treeselect'
 import '@riophae/vue-treeselect/dist/vue-treeselect.css'
 
@@ -183,35 +228,51 @@ export default {
       // 表单校验
       rules: {
         parentId: [
-          { required: true, message: '上级部门不能为空', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('上级部门不能为空'),
+            trigger: 'blur'
+          }
         ],
         deptName: [
-          { required: true, message: '部门名称不能为空', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('部门名称不能为空'),
+            trigger: 'blur'
+          }
         ],
         leader: [
-          { required: true, message: '部门负责人不能为空', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('部门负责人不能为空'),
+            trigger: 'blur'
+          }
         ],
         sort: [
-          { required: true, message: '菜单顺序不能为空', trigger: 'blur' }
+          {
+            required: true,
+            message: this.$t('菜单顺序不能为空'),
+            trigger: 'blur'
+          }
         ],
         email: [
           {
             type: 'email',
-            message: "'请输入正确的邮箱地址",
+            message: this.$t('请输入正确的邮箱地址'),
             trigger: ['blur', 'change']
           }
         ],
         phone: [
           {
             pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-            message: '请输入正确的手机号码',
+            message: this.$t('请输入正确的手机号码'),
             trigger: 'blur'
           }
         ]
       },
       statusOptions: [
-        { label: '正常', value: '0' },
-        { label: '停用', value: '1' }
+        { label: this.$t('正常'), value: '0' },
+        { label: this.$t('停用'), value: '1' }
       ]
     }
   },
@@ -252,11 +313,16 @@ export default {
         this.deptOptions = []
 
         if (e === 'update') {
-          const dept = { deptId: 0, deptName: '主类目', children: [], isDisabled: true }
+          const dept = {
+            deptId: 0,
+            deptName: this.$t('主类目'),
+            children: [],
+            isDisabled: true
+          }
           dept.children = response.data
           this.deptOptions.push(dept)
         } else {
-          const dept = { deptId: 0, deptName: '主类目', children: [] }
+          const dept = { deptId: 0, deptName: this.$t('主类目'), children: [] }
           dept.children = response.data
           this.deptOptions.push(dept)
         }
@@ -293,7 +359,7 @@ export default {
         this.form.parentId = row.deptId
       }
       this.open = true
-      this.title = '添加部门'
+      this.title = this.$t('添加部门')
       this.isEdit = false
     },
     /** 修改按钮操作 */
@@ -308,18 +374,18 @@ export default {
           this.form.leader = ''
         }
         this.open = true
-        this.title = '修改部门'
+        this.title = this.$t('修改部门')
         this.isEdit = true
       })
     },
     /** 提交按钮 */
-    submitForm: function() {
+    submitForm: function () {
       this.$refs['form'].validate(valid => {
         if (valid) {
           if (this.form.deptId !== undefined) {
             updateDept(this.form).then(response => {
               if (response.code === 200) {
-                this.msgSuccess('修改成功')
+                this.msgSuccess(this.$t('修改成功'))
                 this.open = false
                 this.getList()
               } else {
@@ -329,7 +395,7 @@ export default {
           } else {
             addDept(this.form).then(response => {
               if (response.code === 200) {
-                this.msgSuccess('新增成功')
+                this.msgSuccess(this.$t('新增成功'))
                 this.open = false
                 this.getList()
               } else {
@@ -343,22 +409,24 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       this.$confirm(
-        '是否确认删除名称为"' + row.deptName + '"的数据项?',
-        '警告',
+        this.$t('是否确认删除名称为"{deptName}"的数据项?', {
+          deptName: row.deptName
+        }),
+        this.$t('警告'),
         {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+          confirmButtonText: this.$t('确定'),
+          cancelButtonText: this.$t('取消'),
           type: 'warning'
         }
       )
-        .then(function() {
+        .then(function () {
           return delDept(row.deptId)
         })
         .then(() => {
           this.getList()
-          this.msgSuccess('删除成功')
+          this.msgSuccess(this.$t('删除成功'))
         })
-        .catch(function() {})
+        .catch(function () {})
     }
   }
 }

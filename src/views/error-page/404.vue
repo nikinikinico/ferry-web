@@ -2,36 +2,57 @@
   <div class="wscn-http404-container">
     <div class="wscn-http404">
       <div class="pic-404">
-        <img class="pic-404__parent" src="@/assets/404_images/404.png" alt="404">
-        <img class="pic-404__child left" src="@/assets/404_images/404_cloud.png" alt="404">
-        <img class="pic-404__child mid" src="@/assets/404_images/404_cloud.png" alt="404">
-        <img class="pic-404__child right" src="@/assets/404_images/404_cloud.png" alt="404">
+        <img
+          class="pic-404__parent"
+          src="@/assets/404_images/404.png"
+          alt="404"
+        />
+        <img
+          class="pic-404__child left"
+          src="@/assets/404_images/404_cloud.png"
+          alt="404"
+        />
+        <img
+          class="pic-404__child mid"
+          src="@/assets/404_images/404_cloud.png"
+          alt="404"
+        />
+        <img
+          class="pic-404__child right"
+          src="@/assets/404_images/404_cloud.png"
+          alt="404"
+        />
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">OOPS!</div>
         <div class="bullshit__headline">{{ message }}</div>
-        <div class="bullshit__info">请检查您访问的地址是否正确，通常在切换用户时，若您的用户没有上个用户退出时的页面权限，也会触发此报错，请知悉，或者点击一下按钮返回首页。</div>
-        <a href="" class="bullshit__return-home">返回首页</a>
+        <div class="bullshit__info">
+          {{
+            $t(
+              '请检查您访问的地址是否正确，通常在切换用户时，若您的用户没有上个用户退出时的页面权限，也会触发此报错，请知悉，或者点击一下按钮返回首页。'
+            )
+          }}
+        </div>
+        <a href="" class="bullshit__return-home">{{ $t('返回首页') }}</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'Page404',
   computed: {
     message() {
-      return '抱歉，您找的页面不存在。'
+      return this.$t('抱歉，您找的页面不存在。')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.wscn-http404-container{
-  transform: translate(-50%,-50%);
+.wscn-http404-container {
+  transform: translate(-50%, -50%);
   position: absolute;
   top: 40%;
   left: 50%;

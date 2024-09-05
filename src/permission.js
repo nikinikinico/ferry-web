@@ -5,19 +5,22 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css' // progress bar style
 import { getToken } from '@/utils/auth' // get token from cookie
 import getPageTitle from '@/utils/get-page-title'
-
+import i18n from '@/locale'
 NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 store.dispatch('settings/getSystemSettings')
 
 const whiteList = ['/login', '/auth-redirect'] // no redirect whitelist
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   // start progress bar
   NProgress.start()
 
   // set page title
-  document.title = getPageTitle(to.meta.title, store.state.settings.title)
+  document.title = getPageTitle(
+    i18n.t(to.meta.title),
+    store.state.settings.title
+  )
 
   // determine whether the user has logged in
   const hasToken = getToken()
@@ -39,7 +42,10 @@ router.beforeEach(async(to, from, next) => {
           const { roles } = await store.dispatch('user/getInfo')
 
           // generate accessible routes map based on roles
-          const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+          const accessRoutes = await store.dispatch(
+            'permission/generateRoutes',
+            roles
+          )
 
           // dynamically add accessible routes
           router.addRoutes(accessRoutes)
