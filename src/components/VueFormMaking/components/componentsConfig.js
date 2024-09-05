@@ -101,6 +101,14 @@ export const basicComponents = [
       width: '',
       remote: false,
       remoteOptions: [],
+      requestMethod: {
+        url: '',
+        method: 'get',
+        params: '{}',
+        headers: '{}',
+        result: 'data',
+        timeout: 10
+      },
       props: {
         value: 'value',
         label: 'label'
@@ -143,6 +151,14 @@ export const basicComponents = [
       width: '',
       remote: false,
       remoteOptions: [],
+      requestMethod: {
+        url: '',
+        method: 'get',
+        params: '{}',
+        headers: '{}',
+        result: 'data',
+        timeout: 10
+      },
       props: {
         value: 'value',
         label: 'label'
@@ -361,7 +377,7 @@ export const basicComponents = [
       font_color: '#606266', // 字体颜色
       font_weight: '500', // 粗体
       font_family: '', // 字体属性
-      defaultValue: '这是一句话',
+      defaultValue: i18n.t('fm.config.widget.thisIsSentence'),
       labelWidthStatus: true,
       customClass: '',
       labelWidth: 100,
@@ -498,29 +514,29 @@ export const advanceComponents = [
       options: [
         {
           value: 'lanyulei',
-          label: '作者',
+          label: i18n.t('fm.config.widget.author'),
           children: [
             {
               value: 'character',
-              label: '性格',
+              label: i18n.t('fm.config.widget.character'),
               children: [
                 {
                   value: 'good',
-                  label: '好'
+                  label: i18n.t('fm.config.widget.good')
                 },
                 {
                   value: 'well',
-                  label: '很好'
+                  label: i18n.t('fm.config.widget.veryGood')
                 },
                 {
                   value: 'veryGood',
-                  label: '非常好'
+                  label: i18n.t('fm.config.widget.excellent')
                 }
               ]
             },
             {
               value: 'Handsome',
-              label: '帅气'
+              label: i18n.t('fm.config.widget.handsome')
             }
           ]
         }
@@ -602,7 +618,7 @@ export const layoutComponents = [
     type: 'divider',
     icon: 'icon-input',
     options: {
-      defaultValue: '分割线', // 字体大小
+      defaultValue: i18n.t('fm.components.fields.divider'), // 字体大小
       font_size: '15px', // 字体大小
       font_color: '#606266', // 字体颜色
       font_weight: '500', // 粗体

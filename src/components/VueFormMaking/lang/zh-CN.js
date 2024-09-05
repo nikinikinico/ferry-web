@@ -214,7 +214,14 @@ export default {
         promot: '提示',
         labelRequired: 'Label不能为空',
         valueRequired: 'Value不能为空',
-        filedValue: '字段值'
+        filedValue: '字段值',
+        author: '作者',
+        character: '性格',
+        good: '好',
+        veryGood: '很好',
+        excellent: '非常好',
+        handsome: '帅气',
+        thisIsSentence: '这是一句话'
       }
     },
     upload: {

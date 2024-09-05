@@ -122,6 +122,7 @@ export default {
         limit: 'Maximum Upload Count',
         isQiniu: 'Upload with Qiniu Cloud',
         tokenFunc: 'A funchtin to get Qiniu Uptoken',
+        setHeaders: 'Set Headers',
         imageAction: 'Picture upload address',
         tip: 'Text Prompt',
         action: 'Upload Address',
@@ -215,7 +216,14 @@ export default {
         promot: 'Promot',
         labelRequired: 'Label is required',
         valueRequired: 'Value is required',
-        filedValue: 'Field value'
+        filedValue: 'Field value',
+        author: 'Author',
+        character: 'Character',
+        good: 'Good',
+        veryGood: 'Very Good',
+        excellent: 'Excellent',
+        handsome: 'Handsome',
+        thisIsSentence: 'This is a sentence'
       }
     },
     upload: {
