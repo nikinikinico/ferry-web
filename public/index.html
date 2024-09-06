@@ -199,10 +199,9 @@
       }
     </style>
     <script>
-      var now = new Date().getTime()
-      document.write(
-        '<script language="javascript" src="config.js?t=' + now + '"><\/script>'
-      )
+      window.config = {
+        baseUrl: 'http://192.168.31.174:8002'
+      }
     </script>
   </head>
 
